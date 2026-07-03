@@ -19,11 +19,22 @@ in
     settings = {
       shell = "fish";
       font_familty = "JetBrainsMono Nerd Font";
-      font_size = 12;
+      font_size = 16;
       background_opacity = "0.9";
       confirm_os_window_close = 0;
     };
   };
+  home.sessionVariables = {
+    XCURSOR_SIZE = "24";
+  };
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    x11.enable = true;
+    gtk.enable = true;
+  };
+
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -42,7 +53,7 @@ in
     userName = "AmitayBenish";
     userEmail = "amitay.amitay2@gmail.com";
     signing = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKIJKBHEkA0TdNbcxZxoBRqHZK30Ja5XBPrSq0bhxGFt amitay.amitay2@gmail.com";
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFejeoxSP3UlXKP6SViuqndIZB+SXsvX+zin1g4S/ets amitay@nixos";
       signByDefault = true;
     };
     settings = {
@@ -83,6 +94,8 @@ in
       patches = [ ];
     }))
     swaybg
+    pamixer
+    pavucontrol
   ];
   home.stateVersion = "26.05";
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # עדכון הווליום (למשל: 5%+)
 pamixer "$@"

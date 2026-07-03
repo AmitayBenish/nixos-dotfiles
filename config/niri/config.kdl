@@ -272,7 +272,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-sh-at-startup "waybar -c ~/.config/niri/config.jsonc -s ~/.config/niri/style.css"
-spawn-sh-at-startup "swaybg -i ~/Downloads/1405639.jpg"
+spawn-sh-at-startup "swaybg -i ~/Pictures/briar-battle-academia-lol-skin-splash-art-hd-wallpaper-uhdpaper.com-456@5@l.jpg"
 spawn-at-startup "mako"
 spawn-at-startup "export XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
@@ -388,9 +388,9 @@ binds {
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
     // "-l 1.0" limits the volume to 100%.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "~/.config/niri/volume_notify.sh -i 5"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "~/.config/niri/volume_notify.sh -d 5"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "~/.config/niri/volume_notify.sh -t"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "~/.config/niri/volume_notify.sh -i 5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "~/.config/niri/volume_notify.sh -d 5"; }
+    XF86AudioMute        allow-when-locked=true { spawn "sh" "-c" "~/.config/niri/volume_notify.sh -t"; }
     XF86AudioMicMute     allow-when-locked=true { spawn ""; }
 
     // Example media keys mapping using playerctl.
@@ -620,9 +620,8 @@ binds {
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
-
-    Print { spawn-sh "grim -g $(slurp) - | wl-copy"; }
-    Shift+Print { spawn-sh "grim ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%m-%S').png"; }
+    Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | wl-copy -t image/png"; }
+    Shift+Print { spawn "sh" "-c" "grim ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%m-%S').png"; }
     Alt+Print { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may

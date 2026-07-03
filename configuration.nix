@@ -10,16 +10,9 @@
   imports = [
     ./hardware-configuration.nix
   ];
-
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-
-  boot.loader.grub.efiSupport = false;
-  # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
-
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "amitay-btw";
 
   # Configure network connections interactively with nmcli or nmtui.
@@ -64,6 +57,18 @@
     packages = with pkgs; [
       tree
     ];
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = "*";
   };
   nixpkgs.config.allowUnfree = true;
   programs.firefox.enable = true;
