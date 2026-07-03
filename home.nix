@@ -68,6 +68,9 @@ in
     shellInit = ''
       direnv hook fish | source
     '';
+    shellAliases = {
+      nsbf = "sudo nixos-rebuild switch --flake .#amitay_btw";
+    };
   };
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
