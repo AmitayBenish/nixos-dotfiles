@@ -76,6 +76,8 @@ in
     wl-clipboard
     libnotify
     btop
+    mpv
+    libreoffice
     (pkgs.slstatus.overrideAttrs (_: {
       src = ./config/slstatus;
       patches = [ ];

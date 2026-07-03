@@ -87,6 +87,7 @@
     gnumake
     gcc
     direnv
+    libva-utils
   ];
 
   programs.steam = {
