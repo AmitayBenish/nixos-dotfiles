@@ -1,0 +1,11 @@
+theme = "catppuccin_frappe"
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+[editor]
+line-number = "relative"
+cursorline = true
+bufferline="always"
+[editor.indent-guides]
+render = true
