@@ -131,6 +131,11 @@
     ];
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.bluez;
+  };
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

@@ -18,7 +18,7 @@ in
     shellIntegration.enableFishIntegration = true;
     settings = {
       shell = "fish";
-      font_familty = "JetBrainsMono Nerd Font";
+      font_family = "JetBrainsMono Nerd Font";
       font_size = 16;
       background_opacity = "0.9";
       confirm_os_window_close = 0;
