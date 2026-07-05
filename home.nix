@@ -78,7 +78,6 @@ in
       direnv hook fish | source
       set -gx EDITOR hx
       set -gx VISUAL hx
-      ssh-add -q ~/.ssh/id_ed25519 2>/dev/null
     '';
     shellAliases = {
       nsbf = "sudo nixos-rebuild switch --flake .#amitay_btw";
@@ -105,6 +104,11 @@ in
     socketPath = "/run/user/1000/nfsm.sock"; # default
   };
 
+  programs.keychain = {
+    enable = true;
+    keys = [ "id_ed25519" ]; # ודא שזהו שם המפתח שלך
+    agents = [ "ssh" ];
+  };
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
