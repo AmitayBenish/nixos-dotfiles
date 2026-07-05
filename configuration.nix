@@ -30,6 +30,12 @@
     LC_MONETARY = "he_IL.UTF-8";
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   services.printing.enable = true;
   security.rtkit.enable = true;
   # Enable sound.
