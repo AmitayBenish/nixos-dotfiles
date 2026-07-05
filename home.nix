@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
@@ -8,9 +13,13 @@ let
     rofi = "rofi";
     mako = "mako";
     helix = "helix";
+    hypr = "hypr";
   };
 in
 {
+  imports = [
+    inputs.nfsm-flake.homeModules.default
+  ];
   home.username = "amitay";
   home.homeDirectory = "/home/amitay";
   programs.kitty = {
@@ -67,9 +76,16 @@ in
     enable = true;
     shellInit = ''
       direnv hook fish | source
+      set -gx EDITOR hx
+      set -gx VISUAL hx
+      ssh-add -q ~/.ssh/id_ed25519 2>/dev/null
     '';
     shellAliases = {
       nsbf = "sudo nixos-rebuild switch --flake .#amitay_btw";
+    };
+
+    functions = {
+      run = "NIXPKGS_ALLOW_UNFREE=1 nix run nixpkgs#$argv[1] --impure";
     };
   };
 
@@ -80,6 +96,15 @@ in
   }) configs;
 
   services.mako.enable = true;
+
+  # `default` means the value is the default value.
+  # This option creates a systemd service for daemon
+  services.nfsm = {
+    enable = true;
+    enableCli = true; # default
+    socketPath = "/run/user/1000/nfsm.sock"; # default
+  };
+
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
@@ -99,6 +124,8 @@ in
     swaybg
     pamixer
     pavucontrol
+    moonlight-qt
+    hyprlock
   ];
   home.stateVersion = "26.05";
 }
