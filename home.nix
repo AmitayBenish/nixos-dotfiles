@@ -14,6 +14,7 @@ let
     mako = "mako";
     helix = "helix";
     hypr = "hypr";
+    sway = "sway";
   };
 in
 {
