@@ -1,0 +1,190 @@
+
+//-*- mode: jsonc -*-
+[
+    // =======================================
+    // מסך הלפטופ: eDP-1
+    // =======================================
+    {
+        "output": "eDP-1",
+        "layer": "top", 
+        "position": "top", 
+        "height": 30, 
+        "spacing": 4, 
+
+        "modules-left": [
+            "mango/workspaces",
+            "mango/layout",
+            // "mango/window",
+            "tray"
+        ],
+        "modules-center": [
+        ],
+        "modules-right": [
+            "mango/language",
+             "custom/sep",
+             "network",
+             "custom/sep",
+             "cpu",
+             "custom/sep",
+             "clock",
+             "custom/sep",
+            // "tray",
+             "battery"
+        ],
+
+        // Modules configuration
+        "mango/workspaces": {
+          "format": "{index}",
+          "hide-empty": true,
+          "on-click": "activate",
+          "on-click-right": "toggle",
+          "overview-label": "OVERVIEW",
+        },
+        "mango/window" : {
+             "format": "{}",
+            	  "icon-size": 20
+        },
+        "tray": {
+            "spacing": 10
+        },
+        "clock": {
+            "format-alt": "{:%Y-%m-%d}"
+        },
+        "cpu": {
+            "format": "CPU: {usage}%",
+            "tooltip": false
+        },
+        "memory": {
+            "format": "Mem: {used}GiB"
+        },
+        "disk": {
+            "interval": 60,
+            "path": "/",
+            "format": "Disk: {free}"
+        },
+        "battery": {
+            "states": {
+                "good": 95,
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "Bat: {capacity}% {icon} {time}",
+            "format-charging": "Bat: {capacity}%  {time}",
+            "format-plugged": "{capacity}% ",
+            "format-alt": "Bat: {capacity}%",
+            "format-time": "{H}:{M}",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "network": {
+            "format": "Online",
+            "format-disconnected": "Disconnected ⚠"
+        },
+        "custom/sep": {
+            "format" : "|",
+            "interval" : 0
+        },
+        "mango/language": {
+          "format": "{short}",  
+        },
+        "mango/layout": {
+            "format": "{}",
+        },
+        "custom/slstatus": {
+            "exec": "slstatus -s",
+            "format": "{}"
+        }
+    },
+
+    // =======================================
+    // מסך חיצוני: HDMI-A-1
+    // =======================================
+    {
+        "output": "HDMI-A-1",
+        "layer": "top", 
+        "position": "top", 
+        "height": 30, 
+        "spacing": 4, 
+
+        "modules-left": [
+            "mango/workspaces",
+            "mango/layout",
+            "mango/window",
+            "tray"
+        ],
+        "modules-center": [
+        ],
+        "modules-right": [
+            "custom/keyboard-layout",
+            "custom/sep",
+            "network",
+            "custom/sep",
+            "cpu",
+            "custom/sep",
+            "clock",
+            "custom/sep",
+            "battery" // בדרך כלל פחות רלוונטי למסך חיצוני, אבל נשאר כדי שיהיה זהה
+        ],
+
+        // Modules configuration
+        "mango/workspaces": {
+          "format": "{icon}",
+          "hide-empty": true,
+          "on-click": "activate",
+          "on-click-right": "toggle",
+          "overview-label": "OVERVIEW",
+        },
+        "mango/window" : {
+             "format": "{}",
+            	  "icon-size": 20
+        },
+        "tray": {
+            "spacing": 10
+        },
+        "clock": {
+            "format-alt": "{:%Y-%m-%d}"
+        },
+        "cpu": {
+            "format": "CPU: {usage}%",
+            "tooltip": false
+        },
+        "memory": {
+            "format": "Mem: {used}GiB"
+        },
+        "disk": {
+            "interval": 60,
+            "path": "/",
+            "format": "Disk: {free}"
+        },
+        "battery": {
+            "states": {
+                "good": 95,
+                "warning": 30,
+                "critical": 15
+            },
+            "format": "Bat: {capacity}% {icon} {time}",
+            "format-charging": "Bat: {capacity}%  {time}",
+            "format-plugged": "{capacity}% ",
+            "format-alt": "Bat: {capacity}%",
+            "format-time": "{H}:{M}",
+            "format-icons": ["", "", "", "", ""]
+        },
+        "network": {
+            "format": "Online",
+            "format-disconnected": "Disconnected ⚠"
+        },
+        "custom/sep": {
+            "format" : "|",
+            "interval" : 0
+        },
+        "mango/language": {
+          "format": "{short}",  
+        },
+        "mango/layout": {
+            "format": "{}",
+        },
+        "custom/slstatus": {
+            "exec": "slstatus -s",
+            "format": "{}"
+        }
+    }
+]

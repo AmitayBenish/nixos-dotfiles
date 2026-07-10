@@ -16,6 +16,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    waybar-latest = {
+      url = "github:Alexays/Waybar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -24,6 +34,7 @@
       nixpkgs,
       home-manager,
       niri,
+      mangowm,
       ...
     }@inputs:
     {
@@ -32,7 +43,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-
+          mangowm.nixosModules.mango
           niri.nixosModules.niri
 
           home-manager.nixosModules.home-manager

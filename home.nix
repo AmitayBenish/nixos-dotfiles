@@ -15,6 +15,7 @@ let
     helix = "helix";
     hypr = "hypr";
     sway = "sway";
+    mango = "mango";
   };
 in
 {
@@ -105,15 +106,29 @@ in
     socketPath = "/run/user/1000/nfsm.sock"; # default
   };
 
+  services.hypridle = {
+    enable = true;
+  };
+
   programs.keychain = {
     enable = true;
     keys = [ "id_ed25519" ]; # ודא שזהו שם המפתח שלך
     agents = [ "ssh" ];
   };
+
   home.packages = with pkgs; [
     nixd
     nixfmt-rfc-style
-    waybar
+    (waybar.overrideAttrs (oldAttrs: {
+      src = inputs.waybar-latest;
+      mesonFlags = (oldAttrs.mesonFlags or [ ]) ++ [
+        "-Dmango=true"
+        "-Dcava=disabled"
+      ];
+      buildInputs = (oldAttrs.buildInputs or [ ]) ++ [
+        pkgs.modemmanager
+      ];
+    }))
     rofi
     grim
     slurp

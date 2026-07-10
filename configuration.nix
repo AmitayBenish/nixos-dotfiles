@@ -83,7 +83,7 @@
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri.enable = true;
   programs.niri.package = pkgs.niri-unstable;
-
+  programs.mango.enable = true;
   programs.sway.enable = true;
 
   # List packages installed in system profile.
