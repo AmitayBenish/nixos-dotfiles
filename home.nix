@@ -21,6 +21,7 @@ in
 {
   imports = [
     inputs.nfsm-flake.homeModules.default
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
   home.username = "amitay";
   home.homeDirectory = "/home/amitay";
@@ -37,6 +38,7 @@ in
   };
   home.sessionVariables = {
     XCURSOR_SIZE = "24";
+    XDG_DATA_DIRS = "$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:$XDG_DATA_DIRS";
   };
   home.pointerCursor = {
     name = "Adwaita";
@@ -56,13 +58,15 @@ in
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    settings = {
+      "*" = {
+        AddKeysToAgent = true;
+      };
+    };
   };
   services.ssh-agent.enable = true;
   programs.git = {
     enable = true;
-    userName = "AmitayBenish";
-    userEmail = "amitay.amitay2@gmail.com";
     signing = {
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFejeoxSP3UlXKP6SViuqndIZB+SXsvX+zin1g4S/ets amitay@nixos";
       signByDefault = true;
@@ -70,6 +74,10 @@ in
     settings = {
       gpg = {
         format = "ssh";
+      };
+      user = {
+        name = "AmitayBenish";
+        email = "amitay.amitay2@gmail.com";
       };
     };
   };
@@ -110,6 +118,19 @@ in
     enable = true;
   };
 
+  services.flatpak = {
+    enable = true;
+    remotes = [
+      {
+        name = "flathub";
+        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      }
+    ];
+    packages = [
+      "com.stremio.Stremio"
+    ];
+  };
+
   programs.keychain = {
     enable = true;
     keys = [ "id_ed25519" ]; # ודא שזהו שם המפתח שלך
@@ -118,7 +139,7 @@ in
 
   home.packages = with pkgs; [
     nixd
-    nixfmt-rfc-style
+    nixfmt
     (waybar.overrideAttrs (oldAttrs: {
       src = inputs.waybar-latest;
       mesonFlags = (oldAttrs.mesonFlags or [ ]) ++ [
