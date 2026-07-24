@@ -8,10 +8,10 @@
     // Choose the order of the modules
     "modules-left": [
         "niri/workspaces",
-        "custom/tiling_layout",
         "tray"
     ],
     "modules-center": [
+        "custom/launcher"
     ],
 
     "modules-right": [
@@ -29,6 +29,13 @@
     ],
 
     // Modules configuration
+    "niri/workspaces":{
+      "format": "{index} {windows}",
+      "workspace-taskbar":{
+      "enable": true,
+      "icon-size": 20
+      }  
+    },
     "niri/language": {
         "format": "{short}",
     },
@@ -83,5 +90,12 @@
     "custom/slstatus": {
         "exec": "slstatus -s",
         "format": "{}"
+    },
+    
+    "custom/launcher": {
+        "format": " <span size = '150%'> 󱗼 </span>",
+        "on-click": "rofi -show drun",
+        "tooltip": true,
+        "tooltip-format": "Open App Launcher"
     }
 }

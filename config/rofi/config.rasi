@@ -25,5 +25,17 @@ configuration{
     kb-remove-char-back: "BackSpace";
     kb-move-char-forward: "Control+f";
     kb-mode-complete: "Control+o";
+    click-to-exit: true;
+}
+window {
+    width: 80%;      /* החלון יתפוס 80% מרוחב המסך */
+    height: 80%;     /* החלון יתפוס 80% מגובה המסך */
+}
+
+listview {
+    columns: 6;      /* כמות העמודות - יציג המון אפליקציות לרוחב */
+    lines: 5;        /* כמות השורות - כדי שלא תצטרך לדפדף! */
+    fixed-height: true;
+    fixed-columns: true;
 }
 @theme "tokyonight.rasi"

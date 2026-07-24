@@ -57,9 +57,9 @@
     };
   };
 
-  services.tailscale.enable = true;
+  services.power-profiles-daemon.enable = false;
 
-  services.flatpak.enable = true;
+  services.tailscale.enable = true;
 
   users.users.amitay = {
     isNormalUser = true;
@@ -91,6 +91,13 @@
   programs.mango.enable = true;
   programs.sway.enable = true;
 
+  services.xserver.enable = true;
+
+  services.xserver.displayManager.gdm.enable = true;
+
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # הוספת חבילות לסביבת המערכת
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -106,6 +113,10 @@
     gcc
     direnv
     libva-utils
+    gnomeExtensions.paperwm
+    gnomeExtensions.dash-to-panel
+    gnome-tweaks
+    gnome-extension-manager
   ];
 
   programs.steam = {

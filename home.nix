@@ -21,7 +21,6 @@ in
 {
   imports = [
     inputs.nfsm-flake.homeModules.default
-    inputs.nix-flatpak.homeManagerModules.nix-flatpak
   ];
   home.username = "amitay";
   home.homeDirectory = "/home/amitay";
@@ -118,19 +117,6 @@ in
     enable = true;
   };
 
-  services.flatpak = {
-    enable = true;
-    remotes = [
-      {
-        name = "flathub";
-        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      }
-    ];
-    packages = [
-      "com.stremio.Stremio"
-    ];
-  };
-
   programs.keychain = {
     enable = true;
     keys = [ "id_ed25519" ]; # ודא שזהו שם המפתח שלך
@@ -167,6 +153,8 @@ in
     pavucontrol
     moonlight-qt
     hyprlock
+    swayfx
+    stremio-linux-shell
   ];
   home.stateVersion = "26.05";
 }

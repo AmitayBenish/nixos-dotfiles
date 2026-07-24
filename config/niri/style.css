@@ -23,24 +23,40 @@ window#waybar {
 
 #workspaces button {
     padding: 0 6px;
-    color: @cyn;
+    color: @blu;
     background: transparent;
-    border-bottom: 3px solid @bg;
 }
-#workspaces button.active {
+#workspaces button.focused {
     color: @cyn;
-    border-bottom: 3px solid @mag;
 }
 #workspaces button.empty {
     color: @white;
 }
-#workspaces button.empty.active {
-    color: @cyn;
-    border-bottom: 3px solid @mag;
-}
+/* #workspaces button.empty.active { */
+    /* color: @cyn; */
+/* } */
 
 #workspaces button.urgent {
     background-color: @red;
+}
+
+/* העיצוב של המכולה הראשית של ה-Workspace (איפה שהמספר יושב) */
+#workspaces button.niri-workspace {
+    padding: 0 8px;
+    color: #ffffff; /* מוודא שהמספר של העמודה צבוע בלבן ולא נעלם */
+    background: transparent;
+}
+
+/* העיצוב של האייקונים הקטנים של החלונות בתוך הסטריפ */
+#workspaces button .niri-taskbar-btn {
+    padding: 0 4px; /* רווח בין אייקון לאייקון ובין האייקון למספר */
+    background: transparent;
+    border-radius: 4px;
+}
+
+/* אינדיקציה ויזואלית לחלון שבפוקוס בתוך הסטריפ */
+#workspaces button .niri-taskbar-btn.focused {
+    background: rgba(255, 255, 255, 0.2); /* רקע חצי שקוף לחלון הפעיל */
 }
 
 button:hover {

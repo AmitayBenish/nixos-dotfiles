@@ -22,11 +22,11 @@
 
 // defines different aspects of the window
 window {
-    width: 700;
-    /*since line wont work with height, i comment it out 
-    if you rather control the size via height
+    width: 80%;    /*since line wont work with height, i comment it out 
+6  if you rather control the size via height
     just comment it out */
-    //height: 500;
+
+    height: 80%;
 
     orientation: horizontal;
     location: center;
@@ -75,8 +75,8 @@ listview {
     layout: vertical;
     //spacing: 5px;
     padding: 8px;
-    lines: 7;
-    columns: 2;
+    lines: 5;
+    columns: 6;
     border: 0px 3px 3px 3px; 
     border-radius: 0px 0px 6px 6px;
     border-color: @primary;

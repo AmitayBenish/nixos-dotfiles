@@ -5,21 +5,23 @@
     // מסך הלפטופ: eDP-1
     // =======================================
     {
+        "name": "waybar",
         "output": "eDP-1",
         "layer": "top", 
-        "position": "top",  
+        "position": "bottom",  
         "spacing": 3,
+        "margin-top": 0,
+        "margin-left": 150,
+        "margin-right": 150,
+        "margin-bottom": 5, 
 
         "modules-left": [
-            "mango/workspaces",
-            "mango/layout",
-            // "mango/window",
-            "tray"
+            "sway/workspaces",
         ],
         "modules-center": [
         ],
         "modules-right": [
-            "mango/language",
+            "sway/language",
              "network",
              "cpu",
              "clock",
@@ -28,14 +30,17 @@
         ],
 
         // Modules configuration
-        "mango/workspaces": {
-          "format": "{index}",
-          "hide-empty": true,
-          "on-click": "activate",
-          "on-click-right": "toggle",
-          "overview-label": "OVERVIEW",
-        },
-        "mango/window" : {
+        // "sway/workspaces": {
+        //   "format": "{index}",
+        //   "hide-empty": true,
+        //   "on-click": "activate",
+        //   "on-click-right": "toggle",
+        //   "overview-label": "OVERVIEW",
+        // },
+
+        
+        
+        "sway/window" : {
              "format": "{}",
             	  "icon-size": 20
         },
@@ -65,24 +70,24 @@
                 "critical": 15
             },
             "format":  "<span size = '125%'>{icon} {time}</span>",
-            "format-charging": "<span size = '125%'>{icon} </span>",
-            "format-plugged": "<span size = '125%'>{icon} </span>",
+            "format-charging": "<span size = '125%'>{icon}</span>&#8195;<span rise = '5000'>󱐋</span>",
+            "format-plugged": "<span size = '125%'>{icon} </span>&#8195;<span rise = '5000'>󱐋</span>",
             "tooltip-format": "{capacity}%",
             "format-time": "{H}:{M}",
             "format-icons": ["", "", "", "", ""]
         },
         "network": {
-            "format": "󰖟 ",
+            "format": "󰖟",
             "format-disconnected": ""
         },
         "custom/sep": {
             "format" : "\n",
             "interval" : 0
         },
-        "mango/language": {
+        "sway/language": {
           "format": "<span size = 'small'>{short}</span>",  
         },
-        "mango/layout": {
+        "sway/layout": {
             "format": "<span size = 'small'>{}</span>",
         },
         "custom/slstatus": {
@@ -97,19 +102,20 @@
     {
         "output": "HDMI-A-1",
         "layer": "top", 
-        "position": "top",  
-        "spacing": 3, 
-        "width": 15,
+        "position": "bottom",  
+        "spacing": 3,
+        "margin-top": 0,
+        "margin-left": 150,
+        "margin-right": 150,
+        "margin-bottom": 5, 
 
         "modules-left": [
-            "mango/workspaces",
-            "mango/layout",
-            "tray"
+            "sway/workspaces",
         ],
         "modules-center": [
         ],
         "modules-right": [
-            "mango/language",
+            "sway/language",
              "network",
              "cpu",
              "clock",
@@ -118,14 +124,17 @@
         ],
 
         // Modules configuration
-        "mango/workspaces": {
-          "format": "{icon}",
-          "hide-empty": true,
-          "on-click": "activate",
-          "on-click-right": "toggle",
-          "overview-label": "OVERVIEW",
-        },
-        "mango/window" : {
+        // "sway/workspaces": {
+        //   "format": "{index}",
+        //   "hide-empty": true,
+        //   "on-click": "activate",
+        //   "on-click-right": "toggle",
+        //   "overview-label": "OVERVIEW",
+        // },
+
+        
+        
+        "sway/window" : {
              "format": "{}",
             	  "icon-size": 20
         },
@@ -133,8 +142,8 @@
             "spacing": 10
         },
         "clock": {
-            "format": "{:%H\n%M}",
-            "format-alt": "{:%Y-%m-%d}"
+            "format": "{:%H %M}",
+            "tooltip-format": "{:%Y-%m-%d}"
         },
         "cpu": {
             "format": "{usage}%",
@@ -148,32 +157,32 @@
             "path": "/",
             "format": "Disk: {free}"
         },
-         "battery": {
+        "battery": {
             "states": {
                 "good": 95,
                 "warning": 30,
                 "critical": 15
             },
-            "format":  "<span size = '150%'>{icon} {time}</span>",
-            "format-charging": "<span size = '100%'>{icon} </span>",
-            "format-plugged": "<span size = '100%'>{icon} </span>",
+            "format":  "<span size = '125%'>{icon} {time}</span>",
+            "format-charging": "<span size = '125%'>{icon}</span>&#8195;<span rise = '5000'>󱐋</span>",
+            "format-plugged": "<span size = '125%'>{icon} </span>&#8195;<span rise = '5000'>󱐋</span>",
             "tooltip-format": "{capacity}%",
             "format-time": "{H}:{M}",
             "format-icons": ["", "", "", "", ""]
         },
         "network": {
-            "format": "󰖟 ",
+            "format": "󰖟",
             "format-disconnected": ""
         },
         "custom/sep": {
-            "format" : "|",
+            "format" : "\n",
             "interval" : 0
         },
-        "mango/language": {
-          "format": "{short}",  
-        },
-       "mango/language": {
+        "sway/language": {
           "format": "<span size = 'small'>{short}</span>",  
+        },
+        "sway/layout": {
+            "format": "<span size = 'small'>{}</span>",
         },
         "custom/slstatus": {
             "exec": "slstatus -s",

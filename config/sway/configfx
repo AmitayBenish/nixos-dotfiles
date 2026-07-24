@@ -3,28 +3,34 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
- # הגדרת פלטת צבעים (כתום)
-set $orange #ff8c00
-set $dark #222222
-set $white #ffffff
-set $split_yellow #ffee00
 
-# צבעים לחלון הפעיל (Focused Window)
-#                       border   bg       text    indicator child_border
-client.focused          $orange  $orange  $white  $split_yellow   $orange
-
-# צבעים לחלונות שאינם פעילים (אופציונלי - שמירה על ניטרליות)
-client.unfocused        $dark    $dark    $white  $dark     $dark
-client.focused_inactive $dark    $dark    $white  $dark     $dark
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=mangowc
+exec systemctl --user restart hypridle.service
 exec_always mako
 exec_always ~/.config/sway/clamshell.sh
-exec_always ~/.config/sway/layout_watcher.sh
-exec_always ~/.config/sway/status_bar.sh
+exec_always waybar -c ~/.config/sway/config2.jsonc -s ~/.config/sway/style.css
 font pango:monospace 13
 
-# gaps inner 6
-# gaps outer 6
-# for_window [class=".*"] opacity 0.9
+ gaps inner 6
+ gaps outer 6
+ for_window [app_id="firefox"] opacity 0.95
+default_dim_inactive 0.35
+
+
+corner_radius 18
+
+blur enable
+blur_passes 4
+blur_radius 5
+
+layer_effects "waybar" {
+    blur enable;
+    blur_xray enable;
+    blur_ignore_transparent enable;
+    shadows enable;
+    corner_radius 20;
+}
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -56,10 +62,10 @@ output * bg ~/Pictures/briar-battle-academia-lol-skin-splash-art-hd-wallpaper-uh
 #
 # Example configuration:
 
-exec swayidle -w \
-     timeout 300 'pidof hyprlock || hyprlock' \
-     timeout 315 'systemctl suspend' \
-     before-sleep 'pidof hyprlock || hyprlock'
+# exec swayidle -w \
+#      timeout 300 'pidof hyprlock || hyprlock' \
+#      timeout 315 'systemctl suspend' \
+#      before-sleep 'pidof hyprlock || hyprlock'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -182,7 +188,7 @@ exec swayidle -w \
     # Make the current focus fullscreen
     bindsym $mod+Shift+f fullscreen
 
-    
+    bindsym $mod+a focus parent
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
@@ -251,24 +257,9 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command   ~/.config/sway/status_bar.sh 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #323232 #323232 #999999
-        focused_workspace #ff8c00 #ff8c00 #ffffff
-    }
-
-    font pango: monospace 13
-}
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
-default_border pixel 5
+default_border pixel 2
 
 include /etc/sway/config.d/*

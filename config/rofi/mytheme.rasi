@@ -1,0 +1,71 @@
+/*
+ * Rofi Custom Theme with dark background and grid layout
+ * By the Super-Intelligent Gugu Gaga
+ */
+
+configuration {
+    /* התנהגות עכבר ומיקום */
+    click-to-exit: true;
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+/* הגדרות גלובליות */
+* {
+    background-color: transparent;
+    text-color: #d3d3d3; /* צבע טקסט בהיר לרקע כהה */
+}
+
+/* 
+ * הגדרת החלון: חלון שקוף במסך מלא כדי שקליק בחוץ יסגור אותו.
+ * התוכן האמיתי הוא ה-mainbox שמוקף ב-padding.
+ */
+window {
+   width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.01); /* שחור עם 1% אטימות - Niri יחשוב שזה מוצק! */
+    padding: 10%;
+}
+
+/* החלון הצף האמיתי המכיל את האפליקציות */
+mainbox {
+    background-color: #1d1e2c; /* צבע הרקע הכהה מתוך image_2.png */
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px;
+    border-color: #FFA500; /* מסגרת דקה בהירה להבלטה */
+}
+
+/* הגדרת תצוגת הרשימה - עמודות ושורות */
+listview {
+    columns: 6;          /* גריד של 6 עמודות - כפי שביקשת */
+    lines: 4;            /* כמות השורות בכל דף (תשחק עם זה בהתאם לגובה המסך) */
+    spacing: 15px;       /* מרווח בין הפריטים */
+    fixed-columns: true;
+}
+
+/* הגדרת פריט אפליקציה בודד */
+element {
+    orientation: vertical; /* מסדר את האייקון מעל הטקסט */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* עיצוב האייקון הגדול */
+element-icon {
+    size: 64px;            /* אייקונים גדולים ובולטים - כפי שביקשת */
+    horizontal-align: 0.5; /* ממורכז לאמצע */
+}
+
+/* עיצוב הטקסט מתחת לאייקון */
+element-text {
+    horizontal-align: 0.5; /* ממורכז לאמצע */
+    vertical-align: 0.5;
+}
+
+/* עיצוב הפריט הנבחר (הדגשה בעתHover) */
+element selected {
+    background-color: #FFA500; /* הדגשה כתומה בעת בחירה (כפי שביקשת) */
+    text-color: #000000;       /* טקסט שחור ב-Hover */
+}
